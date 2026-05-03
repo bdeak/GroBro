@@ -209,7 +209,7 @@ class Client:
         if DUMP_MESSAGES:
             dump_message_binary(msg.topic, msg.payload)
         try:
-            device_id = msg.topic.split("/")[-1]
+            device_id = msg.topic.split("/")[-1].rstrip("?\x10\x00")
             if GROWATT_CLOUD_ENABLED:
                 if GROWATT_CLOUD == "true" or device_id in GROWATT_CLOUD_FILTER:
                     try:
@@ -399,7 +399,7 @@ class Client:
         if DUMP_MESSAGES:
             dump_message_binary(msg.topic, msg.payload)
         try:
-            device_id = msg.topic.split("/")[-1]
+            device_id = msg.topic.split("/")[-1].rstrip("?\x10\x00")
             if not GROWATT_CLOUD_ENABLED:
                 return
             if GROWATT_CLOUD != "true" and device_id not in GROWATT_CLOUD_FILTER:
