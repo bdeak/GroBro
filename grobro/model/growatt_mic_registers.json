@@ -5,7 +5,24 @@
       "homeassistant": { "publish": true, "name": "Update Interval", "type": "number", "unit_of_measurement": "min", "min": 1, "max": 60, "step": 1 }
     }
   },
-  "holding_registers": {},
+  "holding_registers": {
+    "output_power_limit": {
+      "growatt": {
+        "position": { "register_no": 3, "offset": 0, "size": 2 },
+        "data": { "data_type": "INT" }
+      },
+      "homeassistant": {
+        "publish": true,
+        "name": "Output Power Limit",
+        "type": "number",
+        "unit_of_measurement": "%",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "icon": "mdi:transmission-tower-import"
+      }
+    }
+  },
   "input_registers": {
     "Inverter_Status": {
       "growatt": { "position": { "register_no": 3000, "offset": 0, "size": 2 }, "data": { "data_type": "ENUM", "enum_options": { "enum_type": "INT_MAP", "values": { "0": "Standby", "1": "Normal", "2": "Fault", "3": "Checking" } } } },
